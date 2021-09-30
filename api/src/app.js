@@ -4,9 +4,18 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
-require('./db.js');
+//rutas
+const Country = require("./routes/Countries.js")
+
+// const axios = require("axios")
+// const { Sequelize, Model, DataTypes } = require("sequelize");
+// // const Activities = require(".//models/Activities.js")
+// // const Country = require(".//models/Country.js")
+// const {db, Activities, Country} = require('./db.js');
 
 const server = express();
+
+server.use(express.json());
 
 server.name = 'API';
 
@@ -23,7 +32,7 @@ server.use((req, res, next) => {
 });
 
 server.use('/', routes);
-
+// server.use('/countries', routes);
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const status = err.status || 500;
@@ -31,5 +40,11 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
+// server.get("/", Country)
+
+//Activities
+// server.post('/activity',async (req, res) => {
+
+// });
 
 module.exports = server;
