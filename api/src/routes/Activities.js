@@ -3,6 +3,17 @@ const axios = require("axios")
 const { Sequelize, Model, DataTypes } = require("sequelize");
 const {Country,Activities} = require('../db.js');
 
+
+router.get("/activities", async (req,res)=>{
+  const db = await Activities.findAll({
+  include: [{
+    model: Country
+  }]
+})
+
+res.send(db)
+})
+
 router.post("/activity", async (req,res)=>{
 
   const {id,name,dificulty,duration,season} = req.body;

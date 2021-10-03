@@ -36,6 +36,10 @@ const { Country, Activities } = sequelize.models;
 
 // Product.hasMany(Reviews);
 
+const pruebaActividad = Activities.create({name: "nueva actividad", dificulty: 5, duration: 5, season: "Primavera"})
+console.log(pruebaActividad)
+
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');

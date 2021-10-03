@@ -1,0 +1,7 @@
+.Card{
+	margin: 5px;
+background-color: red;
+border-radius: 10px;
+display: grid;
+justify-items: center;
+}

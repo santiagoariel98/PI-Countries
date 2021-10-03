@@ -1,15 +1,25 @@
 import axios from "axios"
 
 export const GET_COUNTRIES = "GET_COUNTRIES"
+export const GET_COUNTRIES_ORDER = "GET_COUNTRIES_ORDER"
+export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
+export const FILTER_BY_ORDER = "FILTER_BY_ORDER"
+export const SELECT_CARD = "SELECT_CARD"
+export const GET_COUNTRIES_BY_ID = "GET_COUNTRIES_BY_ID"
+export const GET_COUNTRIES_NAME = "GET_COUNTRIES_NAME"
+export const GET_ACTIVITIES = "GET_ACTIVITIES"
+export const POST_ADD_ACTIVITIES = "POST_ADD_ACTIVITIES"
 
 export function getCountries(){
 	return (dispatch)=> {
 		return axios.get("http://localhost:3001/countries").then(res=> {
   			let countries = res.data.map(e=>{
     			let country = {
+    				id: e.id,
 				    img: e.flags,
 				    name: e.name,
-				    continent: e.continent
+				    continent: e.continent,
+				    population: e.population
     			}
     			return country
   			})
@@ -18,5 +28,56 @@ export function getCountries(){
   				payload: countries
   			})
 		})
+	}
+}
+
+export function filterByContinent(payload){
+	return {
+		type: "FILTER_BY_CONTINENT",
+		payload
+	}
+}
+
+export function filterByOrder(payload){
+	return {
+		type: "FILTER_BY_ORDER",
+		payload
+	}
+}
+
+export function getCountryById(id){
+	return async (dispatch)=> {
+		let restDB = await axios.get(`http://localhost:3001/countries/${id}`).then()
+  			return dispatch({
+  				type: GET_COUNTRIES_BY_ID,
+  				payload: restDB.data
+  			})
+	}
+}
+
+export function getCountriesName(name){
+	return async (dispatch)=> {
+		let restDB = await axios.get(`http://localhost:3001/countries?name=${name}`)
+  			return dispatch({
+  				type: GET_COUNTRIES_NAME,
+  				payload: restDB.data
+  			})
+	}
+}
+
+export function getActivities(){
+	return async (dispatch)=> {
+		let restDB = await axios.get(`http://localhost:3001/activities`)
+  			return dispatch({
+  				type: GET_ACTIVITIES,
+  				payload: restDB.data
+  			})
+	}	
+}
+
+export function postAddActivities(payload){
+	return async (dispatch)=> {
+		let restDB = await axios.post(`http://localhost:3001/countries`,payload)	
+		return restDB
 	}
 }

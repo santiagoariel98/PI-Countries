@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.paginado{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: auto;
+}
+.number{
+  display: flex;
+    margin: 5px;
+    background-color: lightgrey;
+    padding: 2px;
+    border-radius: 2px;
+}
+
+.number:hover{
+background-color: red
+}

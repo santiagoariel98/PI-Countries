@@ -29,31 +29,43 @@ router.get("/countries", async (req,res)=>{
   if(db == 0){
       return res.send(restAPI)
   } 
-  //query
-  const countryName = req.query.name
-  if(countryName){
-      const condition = countryName ? {
-        where:{
-          name: {
-            [Op.substring]:countryName
-          }
-        }
-      }:{};
-      const countries = await Country.findAll(condition);
-     return res.json(countries.length ? countries: "no existen paises") 
+  // query filter
+  const countryFilterByName = req.query.name
+  // query order
+  const countryOrder = req.query.order
+  // query filter
+  if(countryFilterByName){
+      let dataQuery = db.filter(e=> e.dataValues.name.toLowerCase().includes(countryFilterByName.toLowerCase()))
+      return res.json(dataQuery.length? dataQuery: "no existen paises con ese nombre")
   }
-  else res.send(db)
+  // query order
+  else if(countryOrder){
+    if(!db.some(e=> e[countryOrder])) return res.json(`no se puede ordenar por ${countryOrder.toUpperCase()} `)
+    let dataQuery = db.sort((a,b)=>{
+      if (a[countryOrder] < b[countryOrder]) return -1;
+      if (a[countryOrder] > b[countryOrder]) return 1;
+      return 0;
+    })
+    return res.json(dataQuery.length? dataQuery: "error")
+  }
+  else{
+      res.send(db)
+  } 
 })
+
+
 
 router.get("/countries/:id", async (req,res)=>{
   //Country
   const { id } = req.params
+  if(id.length >3 || typeof id == "number") return res.json("la id debe ser de 3 letras y no contener numero ej: 'ARG'")
+
   const country = await Country.findByPk(id.toUpperCase(),{
   include: [{
     model: Activities
   }]
 });
-  res.send(country)
+  res.json(country? country: "no hay paises que mostrar")
 })
 
 
