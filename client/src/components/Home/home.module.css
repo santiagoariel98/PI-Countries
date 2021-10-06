@@ -3,3 +3,19 @@
 	grid-template-columns: repeat(3, 1fr);
 	margin: auto;
 }
+
+
+.Title{
+	width: max-content;
+    margin:auto;
+	font-family:"Roboto";
+	color: #ffde41;
+	font-size: 55px;
+	font-weight: bold;
+ letter-spacing: 1px;
+ transition: all .3s linear;
+}
+.Title:hover{
+    cursor: pointer;
+ letter-spacing: 0.1em;
+}

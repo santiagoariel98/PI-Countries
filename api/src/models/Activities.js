@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes} = require('sequelize');
 
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
@@ -8,12 +8,11 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Activities', {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   primaryKey: true
-    // },
     name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate:{
+        len:[5,50]
+      }
     },
     dificulty: {
       type: DataTypes.INTEGER,
@@ -22,13 +21,20 @@ module.exports = (sequelize) => {
       }
     },
     duration: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      validate:{
+        len: [1,24]
+      }
     }, 
     season: {
-      type: DataTypes.STRING,
-      validate:{
-        isIn: [['Verano', 'Primavera',"Otoño","Invierno"]]
+      type: DataTypes.ARRAY(DataTypes.STRING),
+  validate: {
+    isSpecificLength(value) {
+      if (value.length <= 0) {
+        throw new Error('industryOfFocus must only have three items')
       }
+    }  
+  }
     }  
   },{
     // timestamps: false

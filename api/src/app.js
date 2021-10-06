@@ -7,11 +7,6 @@ const routes = require('./routes/index.js');
 //rutas
 const Country = require("./routes/Countries.js")
 
-// const axios = require("axios")
-// const { Sequelize, Model, DataTypes } = require("sequelize");
-// // const Activities = require(".//models/Activities.js")
-// // const Country = require(".//models/Country.js")
-// const {db, Activities, Country} = require('./db.js');
 
 const server = express();
 
@@ -40,11 +35,6 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
-// server.get("/", Country)
 
-//Activities
-// server.post('/activity',async (req, res) => {
-
-// });
 
 module.exports = server;

@@ -1,0 +1,50 @@
+.SearchBar span button{
+	margin-right: 25px;
+	margin-left: 5px;	
+	padding: 5px;
+	font-family:"Roboto";
+	color: #ffde41;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	transition: all .3s linear;
+	text-decoration: none;
+	background-color: transparent;
+	outline: none;
+	border: none;
+}
+
+.SearchBar span{
+	display: flex;
+	align-items: stretch;
+	position: relative;
+}
+
+.SearchBar span button:hover{
+	background-color: #ffde41;
+	border-radius: 25px;
+	color: #2E4053;
+}
+
+
+.SearchBar span input{
+	color: #fff;
+	width: 125px;
+	background-size: auto;
+	background-color: transparent;
+	border: 2px solid #fff;
+	border-radius: 5px;
+	font-size: 15px;	
+	transition: all 0.2s;
+}
+
+.SearchBar span input:focus{
+	transition: all 0.2s;
+	color: #ffde41;
+	width: 125px;
+	background-size: auto;
+	background-color: transparent;
+	border: 2px solid #ffde41;
+	border-radius: 5px;
+	font-size: 15px;	
+}

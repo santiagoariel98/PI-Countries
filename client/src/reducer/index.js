@@ -1,10 +1,10 @@
-import {GET_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ORDER,GET_COUNTRIES_BY_ID,GET_COUNTRIES_NAME,POST_ADD_ACTIVITIES,GET_ACTIVITIES} from "../actions/"
+import {GET_COUNTRIES,GET_COUNTRIES_BY_ID,GET_COUNTRIES_NAME,POST_ADD_ACTIVITIES,GET_ACTIVITIES,GET_FILTERS} from "../actions/"
 
 const initialState = {
   countries: [],
   allCountries:[],
   byId: [],
-  activities: []
+  activities: [],
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,22 +14,20 @@ const reducer = (state = initialState, action) => {
           countries: action.payload,
           allCountries: action.payload,
         }
-      case FILTER_BY_CONTINENT:
-        const allCountries = state.allCountries
-        const statusFilter = action.payload === "All" ? allCountries: 
-        allCountries.filter(el=> el.continent === action.payload)
+      case GET_FILTERS:
+        let filters = state.allCountries.filter(e=> state.countries.includes(e))
+        if(action.payload.Continent){
+          filters = action.payload.Continent === "All"? state.allCountries:
+          state.allCountries.filter(e=> e.continent === action.payload.Continent)
+        }
+        if(action.payload.Order){
+          filters = action.payload.Order === "Asc"? filters.sort((a,b)=> a.name < b.name? -1: a.name>b.name?1:0):
+          filters.sort((a,b)=> a.name > b.name? -1: a.name<b.name?1:0)
+        }
         return {
           ...state,
-          countries: statusFilter,
-        }
-      case FILTER_BY_ORDER:
-        const arrayFilter = state.allCountries.filter(e=> state.countries.includes(e))
-        const statusFilterOrder = action.payload === "Asc" ? arrayFilter.sort((a,b)=> a.name < b.name? -1: a.name>b.name?1:0):
-          arrayFilter.sort((a,b)=> a.name > b.name? -1: a.name<b.name?1:0)
-        return {
-          ...state,
-          countries:statusFilterOrder
-        }
+          countries: filters
+        }        
       case GET_COUNTRIES_BY_ID:
         return{
           ...state,
@@ -40,8 +38,6 @@ const reducer = (state = initialState, action) => {
           ...state,
           countries: action.payload
         }
-
-        
       case POST_ADD_ACTIVITIES:
         return{
           ...state,

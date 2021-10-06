@@ -1,6 +1,0 @@
-.Card{
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	margin: auto;
-background-color: black;
-}

@@ -9,6 +9,7 @@ export const GET_COUNTRIES_BY_ID = "GET_COUNTRIES_BY_ID"
 export const GET_COUNTRIES_NAME = "GET_COUNTRIES_NAME"
 export const GET_ACTIVITIES = "GET_ACTIVITIES"
 export const POST_ADD_ACTIVITIES = "POST_ADD_ACTIVITIES"
+export const GET_FILTERS = "GET_FILTERS"
 
 export function getCountries(){
 	return (dispatch)=> {
@@ -27,27 +28,13 @@ export function getCountries(){
   				type: GET_COUNTRIES,
   				payload: countries
   			})
-		})
-	}
-}
-
-export function filterByContinent(payload){
-	return {
-		type: "FILTER_BY_CONTINENT",
-		payload
-	}
-}
-
-export function filterByOrder(payload){
-	return {
-		type: "FILTER_BY_ORDER",
-		payload
+		}).catch(e=> e)
 	}
 }
 
 export function getCountryById(id){
 	return async (dispatch)=> {
-		let restDB = await axios.get(`http://localhost:3001/countries/${id}`).then()
+		let restDB = await axios.get(`http://localhost:3001/countries/${id}`).then().catch(e=> e)
   			return dispatch({
   				type: GET_COUNTRIES_BY_ID,
   				payload: restDB.data
@@ -77,7 +64,15 @@ export function getActivities(){
 
 export function postAddActivities(payload){
 	return async (dispatch)=> {
-		let restDB = await axios.post(`http://localhost:3001/countries`,payload)	
+		let restDB = await axios.post(`http://localhost:3001/activity`,payload)	
 		return restDB
+	}
+}
+
+export function getFilters(payload){
+
+	return {
+		type: "GET_FILTERS",
+		payload
 	}
 }

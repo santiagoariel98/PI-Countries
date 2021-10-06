@@ -1,0 +1,108 @@
+.Form{
+  display: inline-grid;
+  background-color: rgba(23, 32, 42, 0.95);
+  margin: 5px;
+  transition: all .2s;
+}
+
+
+.Form {
+  width: 450px;
+  height: 450px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.Form img {
+    width: 250px;
+    height: 170px;
+}
+
+
+.Form h4{
+  font-display: auto;
+align-content: stretch;
+color: #fff;
+}
+
+.Form h6{
+  margin: auto;
+  color: #fff;
+}
+
+
+.Form a{
+  font-family:"Roboto";
+  font-weight: bold;
+  color: #ffde41;
+  width: max-content;
+  height: max-content;
+  display: inline-block;
+  padding: 5px;
+  border: 1px;
+  background-color: rgba(255, 0, 0, 0.0);
+  letter-spacing: 1px;
+  transition: all .2s linear;
+  text-decoration: none;
+}
+
+.Form a:hover{
+  background-color: #ffde41;
+  border-radius: 10px;
+  color: #2E4053;
+}
+
+.Form a:active{
+  transition: all 0.1s;
+  background-color: rgba(255, 0, 0, 0.0);
+  border-radius: 25px;
+  color: #ffde41;
+}
+
+
+.Sumbit{
+  margin: 5px;
+  font-family:"Roboto";
+  font-weight: bold;
+  color: #ffde41;
+  width: max-content;
+  height: max-content;
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #ffde41;;
+  border-radius: 10px;
+  background-color: rgba(255, 0, 0, 0.0);
+  letter-spacing: 1px;
+  transition: all .2s linear;
+  text-decoration: none;
+}
+
+.Sumbit:hover{
+  background-color: #ffde41;
+  border-radius: 10px;
+  color: #2E4053;
+}
+
+.Sumbit:active{
+  transition: all 0.1s;
+  background-color: rgba(255, 0, 0, 0.0);
+  border-radius: 25px;
+  color: #ffde41;
+}
+
+
+.Errors{
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.Errors h6{
+  width: max-content;
+  font-size: 15px;
+  margin: auto;
+  font-family:"Roboto"; 
+  font-weight: bold;
+  color:  red;
+  display: flex;
+  margin: auto;
+}

@@ -1,0 +1,61 @@
+body{
+	background-color: #212F3D;
+	background-image: url("../../img/img.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: 500px;
+}
+
+.Title{
+    width: max-content;
+    margin:auto;
+	font-family:"Roboto";
+	color: #ffde41;
+	font-size: 55px;
+
+ letter-spacing: 1px;
+ transition: all .3s linear;
+}
+.Title:hover{
+    cursor: pointer;
+ letter-spacing: 0.1em;
+}
+
+.btn-Landing{
+    font-size: 20px;
+  width: max-content;
+  justify-self: center;
+  padding: 10px;
+  color: #fff;
+  border: 1px;
+  background-color: rgba(255, 0, 0, 0.0);
+ letter-spacing: 1px;
+ transition: all .2s linear;
+  text-decoration: none;
+}
+
+.btn-Landing:hover{
+background-color: #ffde41;
+border-radius: 15px;
+color: #2E4053;
+}
+
+
+.btn-Landing:active{
+  transition: all 0.1s;
+background-color: rgba(255, 0, 0, 0.0);
+border-radius: 25px;
+color: #ffde41;
+}
+
+.countries{
+    Overflow-x: hidden;
+    display: flex;
+    Max-width: 100vw;
+    position: absolute;
+    top: 1px;
+    margin: auto;
+    align-items: center;
+}
+

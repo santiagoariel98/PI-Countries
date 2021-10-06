@@ -7,11 +7,11 @@ export default function Cards({currentCountries}){
 		return(<Card/>)
 	}
 	return(
-			<div className ={style.Card} key={currentCountries.length}>
+			<div className ={style.Cards} key={currentCountries.length}>
 			{currentCountries && 
 				currentCountries.map(e=>{
 			return (
-					<Card img={e.img? e.img: e.flags} name={e.name} continent={e.continent} id={e.id} key={e.id} />
+					<Card className={style.Card} img={e.img? e.img: e.flags} name={e.name} continent={e.continent} id={e.id} key={e.id} />
 				)
 			})}
 			</div>

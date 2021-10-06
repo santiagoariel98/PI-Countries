@@ -4,7 +4,8 @@ const { Sequelize, Model, DataTypes } = require("sequelize");
 const {Country,Activities} = require('../db.js');
 const Op = Sequelize.Op;
 
-  let restAPI = axios("https://restcountries.com/v3/all").then((value)=> value.data.map(e=>{
+  let restAPI = axios("https://restcountries.com/v3/all").then((e)=> e.data.map(e=>{
+    
       Country.findOrCreate({
         where: {id: e.cca3},
         defaults: {
@@ -17,14 +18,15 @@ const Op = Sequelize.Op;
           area: e.area || 1,
           population: e.population || 0
         }
-      }).then()
+      })
   }))
 
 router.get("/countries", async (req,res)=>{
+  console.log("entra aca")
   const db = await Country.findAll({
-  include: [{
+  include: {
     model: Activities
-  }]
+  }
 })
   if(db == 0){
       return res.send(restAPI)

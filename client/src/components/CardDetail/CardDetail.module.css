@@ -1,5 +1,38 @@
 .Card{
-	background-color: red;
-	margin: auto;
+	background-color: gray;
+
 	display: inline-block;
+}
+
+.Activities span{
+	margin: 5px;
+	display: grid;
+	background-color: lightgrey;
+	width: 30%;
+}
+.Activities h5{
+	font-size: 20px;
+	width: auto;
+	margin:  2px;
+}
+.Activities h6{
+	font-size: 10px;
+	width: auto;
+	margin:  1px;
+}
+.Activities{
+/*	background-color: black;*/
+	padding: 5px;
+	width: auto;
+}
+
+.activityTitle{
+	font-size: 20px;
+}
+.CardDetail{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
 }
