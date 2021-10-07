@@ -22,7 +22,6 @@ const Op = Sequelize.Op;
   }))
 
 router.get("/countries", async (req,res)=>{
-  console.log("entra aca")
   const db = await Country.findAll({
   include: {
     model: Activities

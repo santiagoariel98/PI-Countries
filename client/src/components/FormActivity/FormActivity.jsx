@@ -25,11 +25,14 @@ export default function FormActivity(){
   const [inputErrors, setInputErrors] = useState({name: "Activity is required",season: "Season is required",country: []})
 
   const handleChangeInputs = (e)=>{
+
+    if(Array.isArray(inputs[e.target.name]) && inputs[e.target.name].length  > 5) return
+    console.log(inputs.country.length+1)
+
     e.preventDefault()
-    if(Array.isArray(inputs[e.target.name])&& !inputs[e.target.name].includes(e.target.value) ){
+    if(Array.isArray(inputs[e.target.name])&& !inputs[e.target.name].includes(e.target.value)){
       setInputs(()=>({...inputs, [e.target.name]: [...inputs[e.target.name],e.target.value]}))   
     }
-
     else{
       setInputs(()=>({
       ...inputs,
@@ -59,10 +62,9 @@ export default function FormActivity(){
       [e.target.name]: filter
     }))
   }
-
 	return(
 <div className={style.Form}>
-  <Link to="/home">back</Link>
+  <Link className={style.Sumbit}to="/home">back</Link>
       <form>
         <div >
           <label>Activity name:</label>
@@ -74,59 +76,71 @@ export default function FormActivity(){
         </div>
         <div >
           <label >Dificulty:</label>
+          <div>
+          <span>{"★".repeat(inputs.dificulty)}</span>
           <input type="range"
           onChange={(e)=> handleChangeInputs(e)}
           value={inputs.dificulty}
           name="dificulty"
           min="1"
           max="5"
-          /><span>{inputs.dificulty? inputs.dificulty <= 1? "facil":inputs.dificulty <=3 ? "normal":"dificil": "normal"}</span>    
+
+          />    
+          </div>
         </div>
         <div >
           <label>Duration:</label>
+          <div>
+          <span>{inputs.duration? inputs.duration == 24? "+24": inputs.duration : 12 } Hs</span> 
           <input type="range"
+          className={style.range}
           onChange={(e)=> handleChangeInputs(e)}
           value={inputs.duration}
           name="duration"
           min="1"
           max="24"
-          /><span>{inputs.duration? inputs.duration: 12 } horas</span>
+          />           
+          </div>
+
         </div >
         <div>
           <label>Season:</label>
           <select name="season"onChange={(e)=> handleChangeInputs(e)}>
-
             <option value="Summer">Summer</option>
             <option value="Fall">Fall</option>
             <option value="Spring">Spring</option>
             <option value="Winter">Winter</option>
           </select>
-          <div>
-            <select name="country"onChange={(e)=> handleChangeInputs(e)}>
-            {allCountries.length? allCountries.map(e=> 
-              <option key={e.id} value={e.id}>{e.name}</option>): 
-              <option value="none">no hay paises</option>}
-            </select>
-            <div>
-              {inputs.country.length? inputs.country.map(e=> 
-                <span key={e}>{e}<button name="country" value={e}  onClick={(e)=> onClosed(e)}>x</button></span>):
-              <></>
-               }
-            </div>
-          </div>
         </div>
+
+        <div>
+        <label>Country: </label>
+        <select name="country"onChange={(e)=> handleChangeInputs(e)}>
+        {allCountries.length? allCountries.map(e=> 
+        <option key={e.id} value={e.id}>{e.name}</option>): 
+        <option value="none">no hay paises</option>}
+        </select>
+        </div>
+
         <input className={style.Sumbit}id="inputValidate"type="submit" value="Submit" onClick={(e)=> handleSumbit(e)} />
         <div className={style.Errors}>
           <h6 >{inputs.season && inputs.season.length? "": "Season is required"}</h6>
           <h6 >{inputs.country && inputs.country.length? "": "Country is required"}</h6>
           <h6 >{inputErrors.name? inputErrors.name: null}</h6>
         </div>
-            <div>
+            <div  className={style.divs}>
               {inputs.season.length? inputs.season.map(e=> 
-                <span key={e}>{e}<button value={e} name="season" onClick={(e)=> onClosed(e)}>x</button></span>):
+                <span className={style.btnClose} key={e}>{e.toUpperCase()}<button value={e} name="season" onClick={(e)=> onClosed(e)}>x</button></span>):
               <></>
                }
-            </div>        
+            </div> 
+        <div className={style.divs}>
+          {inputs.country.length?
+           inputs.country.map(e=> 
+          <span className={style.btnClose}key={e}>{e}<button name="country" value={e}  onClick={(e)=> onClosed(e)}>x</button></span>):
+          <></>
+          }
+        </div>       
       </form>
 
 </div>

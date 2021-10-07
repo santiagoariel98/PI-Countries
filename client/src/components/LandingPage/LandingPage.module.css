@@ -10,43 +10,48 @@ body{
 .Title{
     width: max-content;
     margin:auto;
-	font-family:"Roboto";
-	color: #ffde41;
-	font-size: 55px;
+    font-family:"Roboto";
+    color: #ffde41;
+    font-size: 55px;
 
- letter-spacing: 1px;
- transition: all .3s linear;
+    letter-spacing: 1px;
+    transition: all .2s linear;
 }
 .Title:hover{
     cursor: pointer;
- letter-spacing: 0.1em;
+    letter-spacing: 0.1em;
+}
+.Title:active{
+    cursor: pointer;
+    letter-spacing: 0.2em;
 }
 
 .btn-Landing{
     font-size: 20px;
-  width: max-content;
-  justify-self: center;
-  padding: 10px;
-  color: #fff;
-  border: 1px;
-  background-color: rgba(255, 0, 0, 0.0);
- letter-spacing: 1px;
- transition: all .2s linear;
-  text-decoration: none;
+    width: max-content;
+    justify-self: center;
+    padding: 10px;
+    color: #fff;
+    border: 1px;
+    background-color: rgba(255, 0, 0, 0.0);
+    letter-spacing: 1px;
+    transition: all .2s linear;
+    text-decoration: none;
 }
 
 .btn-Landing:hover{
-background-color: #ffde41;
-border-radius: 15px;
-color: #2E4053;
+    cursor: pointer;
+    background-color: #ffde41;
+    border-radius: 15px;
+    color: #2E4053;
 }
 
 
 .btn-Landing:active{
-  transition: all 0.1s;
-background-color: rgba(255, 0, 0, 0.0);
-border-radius: 25px;
-color: #ffde41;
+    transition: all 0.1s;
+    background-color: rgba(255, 0, 0, 0.0);
+    border-radius: 25px;
+    color: #ffde41;
 }
 
 .countries{

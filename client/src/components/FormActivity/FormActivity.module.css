@@ -1,10 +1,9 @@
 .Form{
-  display: inline-grid;
+  display: inline-block;
   background-color: rgba(23, 32, 42, 0.95);
   margin: 5px;
   transition: all .2s;
 }
-
 
 .Form {
   width: 450px;
@@ -16,7 +15,6 @@
     width: 250px;
     height: 170px;
 }
-
 
 .Form h4{
   font-display: auto;
@@ -30,37 +28,24 @@ color: #fff;
 }
 
 
-.Form a{
+
+.Form div{
+  display: flex;
+  justify-content: space-between;
+}
+.Form label{
+  margin: 5px;
   font-family:"Roboto";
   font-weight: bold;
   color: #ffde41;
-  width: max-content;
-  height: max-content;
-  display: inline-block;
-  padding: 5px;
-  border: 1px;
-  background-color: rgba(255, 0, 0, 0.0);
-  letter-spacing: 1px;
-  transition: all .2s linear;
-  text-decoration: none;
 }
+.Form a{
+  background-color: rgba(23, 32, 42, 1);
 
-.Form a:hover{
-  background-color: #ffde41;
-  border-radius: 10px;
-  color: #2E4053;
 }
-
-.Form a:active{
-  transition: all 0.1s;
-  background-color: rgba(255, 0, 0, 0.0);
-  border-radius: 25px;
-  color: #ffde41;
-}
-
 
 .Sumbit{
-  margin: 5px;
+  margin: 15px;
   font-family:"Roboto";
   font-weight: bold;
   color: #ffde41;
@@ -102,7 +87,164 @@ color: #fff;
   margin: auto;
   font-family:"Roboto"; 
   font-weight: bold;
-  color:  red;
+  color:  #f4f4f4;
   display: flex;
   margin: auto;
+}
+
+
+.Form input{
+  color: #fff;
+  width: 125px;
+  background-size: auto;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 15px;  
+  transition: all 0.2s;
+}
+
+.Form input:focus{
+  transition: all 0.2s;
+  color: #ffde41;
+  width: 125px;
+  background-size: auto;
+  background-color: transparent;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+
+.Form span{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  color: #ffde41;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.Form select{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  color: #fff;
+  width: 45%;
+  background-size: auto;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 15px;  
+  transition: all 0.2s;  
+}
+.Form select:hover{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  width: 60%;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+.Form select:focus{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  width: 60%;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+
+
+.Form input[type=range]{
+  margin-left: 5px;
+   overflow: hidden;
+   accent-color: #ffde41; 
+}
+.Form input[type=text]{
+  margin-left: 5px;
+   overflow: hidden;
+   accent-color: #ffde41; 
+}
+
+
+.Form input[type=text]{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  color: #fff;
+  width: 25%;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 15px;  
+  transition: all 0.2s;  
+}
+.Form input[type=text]:hover{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  width:40%;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+.Form input[type=text]:focus{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  width:40%;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+
+
+
+
+.Form .btnClose {
+  padding: 5px;
+  background-color: black;
+  font-size: 10px;
+
+}
+
+.Form .btnClose button{
+  font-size: 10px;
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  color: #fff;
+  margin: 2px;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid #fff;
+  border-radius: 5px;
+  transition: all 0.2s;  
+}
+
+.Form .divs{
+    display: flex;
+    background-color: rgba(27, 38, 49, 0.95);
+    margin: 5px;
+    transition: all .2s;
+    flex-wrap: wrap;
 }

@@ -10,7 +10,7 @@ export default function Pages({countriesPerPage,allCountries,pages}){
 		<nav>
 			<ul className= "page">
 				{ pageNumbers && 
-					pageNumbers.map(number =>(
+					pageNumbers.slice(0,10).map(number =>(
 					<li className="number" key={number}>
 						<span  onClick={()=> pages(number)} className="linkPag" >{number}</span>								
 					</li>

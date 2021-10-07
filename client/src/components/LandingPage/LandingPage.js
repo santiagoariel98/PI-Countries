@@ -6,7 +6,7 @@ export default function LandingPage() {
 
 	return(
 		<div >
-			<h1 className={style.Title}>Worlds</h1>
+			<h1 className={style.Title}>Countries</h1>
 			<Link to="/home">
 				<button className={style["btn-Landing"]}>Start</button>
 			</Link>

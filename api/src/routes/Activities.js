@@ -15,7 +15,7 @@ router.get("/activities", async (req,res)=>{
 
 router.post("/activity", async (req,res)=>{
   let activity
-  console.log(req.body)
+
   const {name,dificulty,duration,season,country, id} = req.body;
   try {
     if(country.length <= 0) return res.json("Country no selected")
