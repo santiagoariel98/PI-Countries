@@ -91,7 +91,7 @@ export default function FormActivity(){
         <div >
           <label>Duration:</label>
           <div>
-          <span>{inputs.duration? inputs.duration == 24? "+24": inputs.duration : 12 } Hs</span> 
+          <span>{inputs.duration? inputs.duration === 24? "+24": inputs.duration : 12 } Hs</span> 
           <input type="range"
           className={style.range}
           onChange={(e)=> handleChangeInputs(e)}

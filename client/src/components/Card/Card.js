@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 export default function Card({img,name,continent,id}){
 
 if(img === undefined){
-	return(<div key="ninguno" ><h5 >No hay paises que mostrar.</h5></div>)
+	return(<div key="ninguno" ><h5 >There are no countries to show.</h5></div>)
 }
 
 	return(
@@ -15,7 +15,7 @@ if(img === undefined){
 				<img src={img} alt="img not found " />
 				<h4>{name}</h4>
 				<h6>{continent}</h6>
-				<Link to={`/country/${id}`}><button>info aqui</button></Link>
+				<Link to={`/country/${id}`}><button>+ info</button></Link>
 			</div>
 		)
 }

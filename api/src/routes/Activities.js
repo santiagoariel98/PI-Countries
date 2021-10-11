@@ -15,38 +15,39 @@ router.get("/activities", async (req,res)=>{
 
 router.post("/activity", async (req,res)=>{
   let activity
-
   const {name,dificulty,duration,season,country, id} = req.body;
   try {
-    if(country.length <= 0) return res.json("Country no selected")
-    const countries = await Country.findAll({ where: {
-      id: {
-      [Op.or]: country
-      }
-    },include: [Activities]
-    })
+    if(!country || !duration || !season || !name || !dificulty) return res.sendStatus(400)
+    const countries = await Country.findAll(
+      { where: {
+        id: {[Op.or]: country}
+        },include: [Activities]
+      })
+
     activity = await Activities.findOne({where:{
         name: name,
         dificulty: dificulty,
         duration:duration,
         season: season,
     }})
+
     if(activity){
       await activity.addCountry(countries)
-      return  res.json("ok");
+      return  res.json(activity);
     }
+
     activity = await Activities.create({
-        name: req.body.name,
-        dificulty: req.body.dificulty,
-        duration:req.body.duration,
-        season: req.body.season,
+        name,
+        dificulty,
+        duration,
+        season,
     })
 
 await activity.addCountry(countries)
+res.json(activity)
 
-    res.json("ok");
-  } catch (error) {
-    res.send(error);
+  } catch (e) {
+    console.log(e)
   }
 })
 

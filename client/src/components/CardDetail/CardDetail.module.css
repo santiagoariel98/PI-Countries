@@ -1,14 +1,34 @@
 .Card{
-	background-color: gray;
-
-	display: inline-block;
+  display: inline-grid;
+  background-color: rgba(27, 38, 49, 0.97);
+  margin: 5px;
+  transition: all .2s;
+  justify-items: center;
+  border-radius: 15px;
+  color: #ffde41;
+  width: 500px;
 }
 
-.Activities span{
+
+.CardDetail{
+	display: inline-grid;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.Card h5{
 	margin: 5px;
+	justify-content: center;
+}
+.Card h1{
+	margin: 1px;
+}
+.Activities span{
+	margin: 2px;
+	padding: 5px;
 	display: grid;
-	background-color: lightgrey;
-	width: 30%;
+  	background-color: rgba(23, 32, 42, 1);
+  	border-radius: 15px;
 }
 .Activities h5{
 	font-size: 20px;
@@ -21,7 +41,6 @@
 	margin:  1px;
 }
 .Activities{
-/*	background-color: black;*/
 	padding: 5px;
 	width: auto;
 }
@@ -29,10 +48,32 @@
 .activityTitle{
 	font-size: 20px;
 }
-.CardDetail{
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 1fr;
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
+
+
+.CardDetail button{
+  font-size: 15px;
+  border-radius: 10px;
+  font-family:"Roboto";
+
+  color: #ffde41;
+  margin: 5px;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid  #ffde41;
+  transition: all 0.2s;  
+}
+
+.CardDetail button:hover{
+  background-color: #ffde41;
+  border-radius: 10px;
+  color: #2E4053;
+}
+
+.CardDetail h1{
+	margin-bottom: 0px;
+}
+.Card  div {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
 }

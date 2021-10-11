@@ -3,10 +3,8 @@ import style from "./Cards.module.css"
 import Card from "../Card/Card"
 
 export default function Cards({currentCountries}){
-	if(typeof currentCountries === "string") {
-		return(<Card/>)
-	}
-	return(
+	return typeof currentCountries === "string"? <Card/>:
+		(
 			<div className ={style.Cards} key={currentCountries.length}>
 			{currentCountries && 
 				currentCountries.map(e=>{
