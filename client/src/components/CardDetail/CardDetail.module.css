@@ -76,4 +76,58 @@
 display: flex;
 flex-wrap: wrap;
 justify-content: space-around;
+align-items: center;
+}
+
+.Error{
+	display: block;
+  background-color: rgba(27, 38, 49, 0.95);
+  margin: 5px;
+  transition: all .2s;
+  padding: 10px;
+}
+
+.Error:hover{
+  background-color: rgba(23, 32, 42, 1);
+  color: #ffde41;
+}
+.Error:hover p, .Error:hover button{
+  color: #ffde41;
+}
+
+
+.Error p{
+	display: block;
+  margin: 5px;
+  color: #fff;
+}
+
+.Error button{
+  margin: 5px;
+  font-family:"Roboto";
+  font-weight: bold;
+  color: #fff;
+  width: max-content;
+  height: max-content;
+  padding: 5px;
+  border: 1px solid #fff;;
+  border-radius: 10px;
+  background-color: rgba(255, 0, 0, 0.0);
+  letter-spacing: 1px;
+  transition: all .2s linear;
+  text-decoration: none;
+}
+
+.Error button:hover{
+  background-color: #ffde41;
+  border-color: #ffde41 ;
+  border-radius: 10px;
+  color: #2E4053;
+}
+
+.Error button:active{
+  transition: all 0.1s;
+  background-color: rgba(255, 0, 0, 0.0);
+  border-radius: 25px;
+  color: #ffde41;
 }

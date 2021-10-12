@@ -74,6 +74,11 @@ color: #fff;
   color: #ffde41;
 }
 
+.Sumbit:disabled{
+  transition: all 0.1s;
+  background-color: rgba(255, 0, 0, 0.0);
+  color: #red;
+}
 
 .Errors{
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);

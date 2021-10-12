@@ -4,7 +4,8 @@ body{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-	background-size: 500px;
+	background-size: 35em;
+
 }
 
 .Title{
@@ -62,5 +63,11 @@ body{
     top: 1px;
     margin: auto;
     align-items: center;
+}
+
+@media (max-width: 600px){
+    body{
+        background-size: contain;
+    }
 }
 

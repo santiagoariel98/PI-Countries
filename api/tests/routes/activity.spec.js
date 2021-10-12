@@ -57,7 +57,7 @@ describe('Country routes', () => {
             season:["Summer"]
           })
           .expect(400);
-      });
+      }).timeout(10000);
       it('should post 400', function(){
         return agent.post('/activity')
           .send({
@@ -66,7 +66,7 @@ describe('Country routes', () => {
             country:["ABC"]
           })
           .expect(400);
-      });
+      }).timeout(10000);
 
     });
   describe('GET /activities', () => {

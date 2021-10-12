@@ -15,22 +15,20 @@ export default function CardDetail({match}){
 	return(
 			<div className={style.CardDetail}>{
 				country?
+			<>
 				<div className={style.Card}>
+
 					<Link to="/home">
 					<button>Back</button>
 					</Link>
 					<img src={country.flags} alt="" width="200px"/>
 					<h3>{country.id}</h3>
 					<h1>{country.name}</h1>
-					<div><h5 >Capital:</h5><h5>{country.capital}</h5></div>
+					<div><h5>Capital:</h5><h5>{country.capital}</h5></div>
 					<div><h5>Subregion:</h5><h5>{country.subregion}</h5></div>
 					<div><h5>Area:</h5><h5>{(country.area* 0.0010).toFixed(2) + " km2"}</h5></div>
 					<div><h5>Population:</h5><h5>{country.population?.toLocaleString("en")}</h5></div>
-
-				</div>:
-				<h5>No country information to display.</h5>		
-			}
-
+				</div>
 				<div className={style.Card}>
 				<h1>Activities</h1>
 					<div className={style.Activities}>{country.Activities && country.Activities.length?
@@ -44,9 +42,23 @@ export default function CardDetail({match}){
 									<h6> Dificulty: {"★".repeat(e.dificulty)}	</h6>					
 								</span>
 								)
-						}): "There is no activity to display."
+						}):
+						<>
+						<p>"There is no activity to display."</p>
+						<Link to="/activity">
+							<button>Create Activity</button>
+						</Link>
+						</>
 					}</div>							
-				</div>
+				</div>				
+			</>:
+				<div className={style.Error}>
+					<p> Country Not Found</p>
+					<Link to="/home"><button>back</button></Link>
+				</div>	
+			}
+
+
 			
 
 			</div>

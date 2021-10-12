@@ -4,7 +4,7 @@ import Card from "../Card/Card"
 
 export default function Cards({currentCountries}){
 	return(
-		<div>
+		<div style={{margin: "0 auto"}}>
 		{currentCountries && currentCountries.map(e=>{
 		return(
 			<Card className={style.Card} 

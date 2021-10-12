@@ -13,44 +13,64 @@ export default function FormActivity(){
 
   const [inputs, setInputs] = useState({
     name: "",
-    dificulty:"3",
-    duration:"12",
+    dificulty: 3,
+    duration: 12,
     season:[],
     country: []
   })
-  useEffect(()=>{dispatch(getCountries())},[dispatch])
+  const [errors, setErrors] = useState({
+    name:"Activity: requires 5 letter",
+    season:"Season: requires a season",
+    country: "Country: requires a country"}) 
 
-  
+const validate = (input)=>{
+  let errors = {}
 
+  if(input.name.length < 5){
+    errors.name = "Activity: requires 5 letter"
+  } else if(input.name.length > 25){
+    errors.name = "Activity: max 26 letter"
+  }
+  if(input.country.length <= 0){
+    errors.country = "Country: requires a country"
+  }
+  if(input.season.length <= 0){
+    errors.season = "Season: requires a season"
+  }
+  return errors
+}    
   const handleChangeInputs = (e)=>{
     e.preventDefault()
     const{name,value} = e.target
-    if(Array.isArray(inputs[name]) && inputs[name].length  > 6) return
-    if( Array.isArray(inputs[name])&& !inputs[name].includes(value) ){
-      setInputs(()=>({...inputs, [name]: [...inputs[name],value]}))   
-    }else{
-      setInputs(()=>({
-      ...inputs,
-      [name]: Array.isArray(inputs[name])&& 
-      inputs[name].includes(value)? 
-      inputs[name]: value
-     }))
+    if(Array.isArray(inputs[name])){
+      if(inputs[name].includes(value)){
+        setInputs({...inputs})
+        setErrors(validate({...inputs}))
+      } 
+      else if(inputs[name].length < 21){
+        setInputs({...inputs, [name]: [...inputs[name], value]})
+        setErrors(validate({...inputs, [name]: [...inputs[name], value]}))
+      }
+    } else{
+      setInputs({...inputs, [name]: value})
+      setErrors(validate({...inputs, [name]: value}))
     }
-  }
-
-  const handleSumbit = (e)=>{
-  e.preventDefault()
-  dispatch(postAddActivities(inputs))
   }
 
   const onClosed = (e)=>{
     e.preventDefault()
     let filter = inputs[e.target.name].filter(arr=> arr !== e.target.value)
-    setInputs(()=>({
-      ...inputs,
-      [e.target.name]: filter
-    }))
+    setErrors(validate({...inputs,[e.target.name]: filter}))
+    setInputs({...inputs,[e.target.name]: filter})
   }
+
+  const handleSumbit = (e)=>{
+  e.preventDefault()
+  
+  dispatch(postAddActivities(inputs))
+  }
+
+useEffect(()=>{dispatch(getCountries())},[dispatch])
 	return(
 <div className={style.Form}>
   <Link className={style.Sumbit}to="/home">back</Link>
@@ -111,11 +131,17 @@ export default function FormActivity(){
         </select>
         </div>
 
-        <input className={style.Sumbit}id="inputValidate"type="submit" value="Submit" onClick={(e)=> handleSumbit(e)} />
-        <div className={style.Errors}>
-          <h6 >{inputs.season && inputs.season.length? "": "Season: is required"}</h6>
-          <h6 >{inputs.country && inputs.country.length? "": "Country: is required"}</h6>
-          <h6 >{inputs.name && inputs.name.length > 4?"" :"Activity: requires 5 letter"}</h6>
+        <input className={style.Sumbit}
+        id="inputValidate"type="submit" 
+        value="Submit" 
+        onClick={(e)=> handleSumbit(e)} 
+        disabled={!errors.name && !errors.country && !errors.season? false: true}/>
+        <div className={style.Errors}>{
+
+        }
+          <h6 >{errors.name? errors.name:""}</h6>
+          <h6 >{errors.country? errors.country:""}</h6>
+          <h6 >{errors.season? errors.season:""}</h6>
         </div>
             <div  className={style.divs}>
               {inputs.season.length? inputs.season.map(e=> 
