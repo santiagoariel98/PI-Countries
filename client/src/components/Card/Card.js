@@ -4,14 +4,8 @@ import {Link} from "react-router-dom"
 
 
 export default function Card({img,name,continent,id}){
-
-if(img === undefined){
-	return(<div key="ninguno" ><h5 >There are no countries to show.</h5></div>)
-}
-
 	return(
 			<div className={style.Card}>
-
 				<img src={img} alt="img not found " />
 				<h4>{name}</h4>
 				<h6>{continent}</h6>

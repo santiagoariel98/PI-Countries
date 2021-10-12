@@ -12,7 +12,6 @@ export default function CardDetail({match}){
 	useEffect(()=>{dispatch(getCountryById(match.params.id))},[dispatch,match.params.id])
 	
 	const country =  useSelector((state)=> state.byId)
-	console.log(country.Activities)
 	return(
 			<div className={style.CardDetail}>{
 				country?

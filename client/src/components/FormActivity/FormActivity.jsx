@@ -3,7 +3,6 @@ import {useState, useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {Link} from "react-router-dom"
 import {postAddActivities, getCountries} from "../../actions/index.js"
-import validate from "./validate.js"
 import style from "./FormActivity.module.css"
 
 
@@ -19,32 +18,23 @@ export default function FormActivity(){
     season:[],
     country: []
   })
-
   useEffect(()=>{dispatch(getCountries())},[dispatch])
 
-  const [inputErrors, setInputErrors] = useState({name: "Activity is required",season: "Season is required",country: []})
+  
 
   const handleChangeInputs = (e)=>{
-
-    if(Array.isArray(inputs[e.target.name]) && inputs[e.target.name].length  > 5) return
-    console.log(inputs.country.length+1)
-
     e.preventDefault()
-    if(Array.isArray(inputs[e.target.name])&& !inputs[e.target.name].includes(e.target.value)){
-      setInputs(()=>({...inputs, [e.target.name]: [...inputs[e.target.name],e.target.value]}))   
-    }
-    else{
+    const{name,value} = e.target
+    if(Array.isArray(inputs[name]) && inputs[name].length  > 6) return
+    if( Array.isArray(inputs[name])&& !inputs[name].includes(value) ){
+      setInputs(()=>({...inputs, [name]: [...inputs[name],value]}))   
+    }else{
       setInputs(()=>({
       ...inputs,
-      [e.target.name]: Array.isArray(inputs[e.target.name])&& 
-      inputs[e.target.name].includes(e.target.value)? inputs[e.target.name]: e.target.value
+      [name]: Array.isArray(inputs[name])&& 
+      inputs[name].includes(value)? 
+      inputs[name]: value
      }))
-    }
-    let errors = validate({...inputs,[e.target.name]:e.target.value})
-    if(Object.values(errors).length !== 0 ){
-      setInputErrors(errors)
-    } else {
-      setInputErrors({})
     }
   }
 
@@ -54,7 +44,6 @@ export default function FormActivity(){
   }
 
   const onClosed = (e)=>{
-    console.log(e.target.name + " "+ e.target.value)
     e.preventDefault()
     let filter = inputs[e.target.name].filter(arr=> arr !== e.target.value)
     setInputs(()=>({
@@ -124,9 +113,9 @@ export default function FormActivity(){
 
         <input className={style.Sumbit}id="inputValidate"type="submit" value="Submit" onClick={(e)=> handleSumbit(e)} />
         <div className={style.Errors}>
-          <h6 >{inputs.season && inputs.season.length? "": "Season is required"}</h6>
-          <h6 >{inputs.country && inputs.country.length? "": "Country is required"}</h6>
-          <h6 >{inputErrors.name? inputErrors.name: null}</h6>
+          <h6 >{inputs.season && inputs.season.length? "": "Season: is required"}</h6>
+          <h6 >{inputs.country && inputs.country.length? "": "Country: is required"}</h6>
+          <h6 >{inputs.name && inputs.name.length > 4?"" :"Activity: requires 5 letter"}</h6>
         </div>
             <div  className={style.divs}>
               {inputs.season.length? inputs.season.map(e=> 

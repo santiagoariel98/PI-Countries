@@ -13,8 +13,8 @@ const Op = Sequelize.Op;
           name: e.name.common,
           flags: e.flags[0],
           continent: e.region,
-          capital: e.capital? e.capital[0]: "none",
-          subregion: e.subregion || "none",
+          capital: e.capital? e.capital[0]: "-",
+          subregion: e.subregion || "-",
           area: e.area || 1,
           population: e.population || 0
         }
@@ -28,7 +28,7 @@ router.get("/countries", async (req,res)=>{
   }
 })
   if(db == 0){
-      return res.send(await restAPI)
+      return res.send(restAPI)
   } 
   // query filter
   const name = req.query.name
@@ -37,7 +37,7 @@ router.get("/countries", async (req,res)=>{
   // query filter
   if(name){
       let dataQuery = db.filter(e=> e.dataValues.name.toLowerCase().includes(name.toLowerCase()))
-      return dataQuery.length? res.json(dataQuery): res.sendStatus(404) 
+      return dataQuery.length? res.json(dataQuery): res.status(404).send({"error": "query error"})
   }
   else{
       res.send(db)
@@ -48,13 +48,13 @@ router.get("/countries", async (req,res)=>{
 
 router.get("/countries/:id", async (req,res)=>{
   const { id } = req.params
-  if(id.length !== 3 || id.match(/^[0-9]+$/)) return res.sendStatus(404)
+  if(id.length !== 3 || id.match(/^[0-9]+$/)) return res.status(404).send({"error": "error id"})
   const country = await Country.findByPk(id.toUpperCase(),{
   include: [{
     model: Activities
   }]
 });
-country? res.json(country): res.sendStatus(404)
+country? res.json(country): res.status(404).send({"error": "no se encontro al pais"})
 })
 
 

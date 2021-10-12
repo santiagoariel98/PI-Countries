@@ -14,10 +14,11 @@ router.get("/activities", async (req,res)=>{
 
 
 router.post("/activity", async (req,res)=>{
-  let activity
-  const {name,dificulty,duration,season,country, id} = req.body;
   try {
-    if(!country || !duration || !season || !name || !dificulty) return res.sendStatus(400)
+  let activity
+    const {name,dificulty,duration,season,country, id} = req.body;
+    
+    if(!country.length || !duration || !season.length || !name || !dificulty) return res.sendStatus(400)
     const countries = await Country.findAll(
       { where: {
         id: {[Op.or]: country}
@@ -46,8 +47,8 @@ router.post("/activity", async (req,res)=>{
 await activity.addCountry(countries)
 res.json(activity)
 
-  } catch (e) {
-    console.log(e)
+  } catch (err) {
+    res.status(400).send({ "error": err.errors[0].message });
   }
 })
 

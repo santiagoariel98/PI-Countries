@@ -33,14 +33,15 @@ module.exports = (sequelize) => {
     season: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false,
-  validate: {
-    isLargue(value) {
-      if (value.length <= 0) {
-        throw new Error('industryOfFocus must only have three items')
+      validate: {
+        arrayValidate(arr) {
+          if(!Array.isArray(arr) || !arr.length) throw new Error('No es un array')
+            if(arr.length > 4) throw new Error('array muy largo')
+            let test = ["Summer","Winter","Fall","Spring"]
+            let filter = arr.filter(e=> test.includes(e))
+            if(arr.length !== filter.length) throw new Error('solo se permiten estos valores "Summer,Winter,Fall,Spring"')
+        },
       }
-    },
-    // isIn: [['Summer', 'Spring',"Fall","Winter"]]
-  }
     }  
   },{
     // timestamps: false
