@@ -16,14 +16,20 @@ const reducer = (state = initialState, action) => {
         }
       case GET_FILTERS:
         let filters = state.allCountries.filter(e=> state.countries.includes(e))
+
         if(action.payload.Continent){
           filters = action.payload.Continent === "All"? state.allCountries:
           state.allCountries.filter(e=> e.continent === action.payload.Continent)
         }
         if(action.payload.Order){
-          filters = action.payload.Order === "Asc"? filters.sort((a,b)=> a.name < b.name? -1: a.name>b.name?1:0):
-          filters.sort((a,b)=> a.name > b.name? -1: a.name<b.name?1:0)
+          if(action.payload.Order === "Asc") {filters.sort((a,b)=> a.name < b.name? -1: a.name>b.name?1:0)}
+          else if(action.payload.Order === "Des") {filters.sort((a,b)=> a.name > b.name? -1: a.name<b.name?1:0)}
+          else if(action.payload.Order === "Act") {filters.sort((a,b)=> b.Activities.length - a.Activities.length)}
+          else if(action.payload.Order === "Max") {filters.sort((a,b)=> b.population - a.population)}  
+          else{filters.sort((a,b)=> a.population - b.population)}
         }
+
+
         return {
           ...state,
           countries: filters

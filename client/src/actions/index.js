@@ -20,7 +20,8 @@ export function getCountries(){
 				    img: e.flags,
 				    name: e.name,
 				    continent: e.continent,
-				    population: e.population
+				    population: e.population,
+				    Activities: e.Activities
     			}
     			return country
   			})

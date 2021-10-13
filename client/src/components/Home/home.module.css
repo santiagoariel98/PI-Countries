@@ -13,3 +13,126 @@
  letter-spacing: 0.1em;
 }
 
+nav{
+	display: block;
+	justify-content: space-between;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+
+a button{
+  font-size: 15px;
+  border-radius: 10px;
+  font-family:"Roboto";
+
+  color: #ffde41;
+  margin: 5px;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid  #ffde41;
+  transition: all 0.2s;  
+}
+
+a button:hover{
+  background-color: #ffde41;
+  border-radius: 10px;
+  color: #2E4053;
+}
+
+input[type=text]{
+	margin: 5px;
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  color: #fff;
+  width: 8em;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 15px;  
+  transition: all 0.2s;  
+}
+input[type=text]:hover{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+input[type=text]:focus{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+select{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  color: #fff;
+  width: 6em;
+  background-size: auto;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 15px;  
+  transition: all 0.2s;  
+}
+select:hover{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+select:focus{
+  border-radius: 5px;
+   font-family:"Roboto";
+  font-weight: bold;
+  transition: all 0.2s;
+  color: #ffde41;
+  background-size: auto;
+  background-color: #212F3D;
+  border: 2px solid #ffde41;
+  border-radius: 5px;
+  font-size: 15px;  
+}
+
+p button{
+  margin: 0.2em;
+  font-size: 1.5em;
+  border-radius: 10px;
+  font-family:"Roboto";
+  color: #ffde41;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid  #ffde41;
+  transition: all 0.2s;  
+}
+
+p button:hover{
+  background-color: #ffde41;
+  border-radius: 10px;
+  color: #2E4053;
+}
+p .btnPage{
+    margin: 0.4em;
+}
