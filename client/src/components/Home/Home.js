@@ -102,12 +102,14 @@ useEffect(()=>{dispatch(getCountries())},[dispatch])
 					placeholder = "Search country..."
 					onChange={e=>handleChangeSearch(e)}
 				/>
-					<button onClick={e=>handleSumbit(e)}>></button>				
+					<button onClick={e=>handleSumbit(e)}>sumbit</button>				
 				</div>
 			</nav>
+			<br/>
 			<p>
 				<button className="btnPage" name="first" onClick={(e)=> handlePagePrevious(e)}>{"<<"}</button>
 				<button onClick={(e)=> handlePagePrevious(e)}>{"<"}</button>
+				<span>{currentPage + "-" + lastPage}</span>
 				<button onClick={(e)=> handlePageNext(e)}>></button>
 				<button className="btnPage" name="last" onClick={(e)=> handlePageNext(e)}>>></button>
 			</p>

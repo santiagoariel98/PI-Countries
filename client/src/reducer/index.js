@@ -1,5 +1,4 @@
 import {GET_COUNTRIES,GET_COUNTRIES_BY_ID,GET_COUNTRIES_NAME,POST_ADD_ACTIVITIES,GET_ACTIVITIES,GET_FILTERS} from "../actions/"
-
 const initialState = {
   countries: [],
   allCountries:[],
@@ -28,8 +27,6 @@ const reducer = (state = initialState, action) => {
           else if(action.payload.Order === "Max") {filters.sort((a,b)=> b.population - a.population)}  
           else{filters.sort((a,b)=> a.population - b.population)}
         }
-
-
         return {
           ...state,
           countries: filters

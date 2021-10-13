@@ -20,6 +20,25 @@ nav{
 	margin-right: 2em;
 }
 
+nav button{
+  font-size: 15px;
+  border-radius: 10px;
+  font-family:"Roboto";
+  font-weight: bold;
+  color: #fff;
+  margin: 2px;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid  #fff;
+  transition: all 0.2s;   
+}
+
+nav button:hover{
+  background-color: #ffde41;
+  border-radius: 10px;
+  color: #2E4053;
+  border-color: #ffde41;
+}
 
 a button{
   font-size: 15px;
@@ -116,9 +135,10 @@ select:focus{
   font-size: 15px;  
 }
 
-p button{
+p button, p span{
   margin: 0.2em;
-  font-size: 1.5em;
+  padding: 0.2em;
+  font-size: 1em;
   border-radius: 10px;
   font-family:"Roboto";
   color: #ffde41;
@@ -135,4 +155,7 @@ p button:hover{
 }
 p .btnPage{
     margin: 0.4em;
+}
+
+br{
 }

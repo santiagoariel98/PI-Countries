@@ -22,7 +22,7 @@ export default function FormActivity(){
     name:"Activity: requires 5 letter",
     season:"Season: requires a season",
     country: "Country: requires a country"}) 
-
+  const [msg, setMsg] = useState(false)
 const validate = (input)=>{
   let errors = {}
 
@@ -65,8 +65,21 @@ const validate = (input)=>{
   }
 
   const handleSumbit = (e)=>{
-  e.preventDefault()
-  
+    setTimeout(200)
+  console.log(e)
+  setInputs({
+    name: "",
+    dificulty: 3,
+    duration: 12,
+    season:[],
+    country: []
+  })
+  setErrors({
+    name:"Activity: requires 5 letter",
+    season:"Season: requires a season",
+    country: "Country: requires a country"})
+  setMsg(true)
+  e.preventDefault()  
   dispatch(postAddActivities(inputs))
   }
 
@@ -157,7 +170,6 @@ useEffect(()=>{dispatch(getCountries())},[dispatch])
           }
         </div>       
       </form>
-
 </div>
     )	
 }
