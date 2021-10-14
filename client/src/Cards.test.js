@@ -10,7 +10,6 @@ describe("<Cards />", () => {
   beforeEach(() => {
     wrapper = shallow(<Cards />);
   });
-  console.log("wrapper")
   it("deberia renderizar 1 componentes <Card />", () => {
     expect(wrapper.find("Card")).toEqual({});
   });

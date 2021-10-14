@@ -40,8 +40,10 @@ export function getCountryById(id){
 }
 
 export function getCountriesName(name){
+
 	return async (dispatch)=> {
 		let restDB = await axios.get(`http://localhost:3001/countries?name=${name}`)
+		console.log(restDB)
   			return dispatch({
   				type: GET_COUNTRIES_NAME,
   				payload: restDB.data

@@ -20,13 +20,12 @@ const countriesExample = [{
   capital: "example2"
 }];
 
-describe('Country routes', () => {
+describe('Activity routes', () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   }));
-  beforeEach(() => Country.sync({ force: true })
-    .then(() => countriesExample.map(e=> Country.create(e))));
+  beforeEach(() => Country.sync({ force: true }))
    describe('POST /activity', function () {
       it('should post 200', function(){
         return agent.post('/activity')
@@ -48,26 +47,26 @@ describe('Country routes', () => {
             expect(activity).to.exist;
           })
       });
-      it('should post 400', function(){
+      it('should post 200', function(){
         return agent.post('/activity')
           .send({
-            name:"activity example",
+            name:"activity example 2",
             dificulty:5,
             duration:5,
-            season:["Summer"]
-          })
-          .expect(400);
-      }).timeout(10000);
-      it('should post 400', function(){
-        return agent.post('/activity')
-          .send({
-            name:"activity example",
-            dificulty:5,
+            season:["Summer", "Winter"],
             country:["ABC"]
           })
-          .expect(400);
-      }).timeout(10000);
-
+          .then(()=>{
+            return Activities.findOne({
+              where:{
+                name:"activity example 2"
+              }
+            })
+          })
+          .then(activity2=>{
+            expect(activity2).to.exist;
+          })
+      });
     });
   describe('GET /activities', () => {
     it('should get 200', () =>

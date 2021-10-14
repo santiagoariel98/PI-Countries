@@ -9,7 +9,8 @@ export default function Cards({currentCountries}){
 		return(
 			<Card className={style.Card} 
 			img={e.img? e.img: e.flags} 
-			name={e.name} 
+			name={e.name}
+			population={e.population} 
 			continent={e.continent} 
 			id={e.id} 
 			key={e.id} />)

@@ -1,7 +1,7 @@
 const { Country, conn, Activities } = require('../../src/db.js');
 const { expect } = require('chai');
 
-describe('Country model', () => {
+describe('Activity model', () => {
   before(() => conn.authenticate()
     .catch((err) => {
       console.error('Unable to connect to the database:', err);

@@ -1,6 +1,6 @@
 .Card{
   display: inline-grid;
-  background-color: rgba(27, 38, 49, 0.97);
+  background-color: rgba(27, 38, 49, 0.99);
   margin: 5px;
   transition: all .2s;
   justify-items: center;

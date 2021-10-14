@@ -5,7 +5,6 @@ const {Country,Activities} = require('../db.js');
 const Op = Sequelize.Op;
 
   let restAPI = axios("https://restcountries.com/v3/all").then((e)=> e.data.map(e=>{
-    
       Country.findOrCreate({
         where: {id: e.cca3},
         defaults: {
@@ -22,22 +21,19 @@ const Op = Sequelize.Op;
   }))
 
 router.get("/countries", async (req,res)=>{
+  
   const db = await Country.findAll({
-  include: {
-    model: Activities
-  }
-})
-  if(db == 0){
-      return res.send(restAPI)
-  } 
+    include: {
+      model: Activities
+    }
+  })
   // query filter
   const name = req.query.name
-  
-  const order = req.query.order
   // query filter
+
   if(name){
       let dataQuery = db.filter(e=> e.dataValues.name.toLowerCase().includes(name.toLowerCase()))
-      return dataQuery.length? res.json(dataQuery): res.status(404).send({"error": "query error"})
+      return dataQuery.length? res.json(dataQuery): res.sendStatus(404)
   }
   else{
       res.send(db)
@@ -48,13 +44,13 @@ router.get("/countries", async (req,res)=>{
 
 router.get("/countries/:id", async (req,res)=>{
   const { id } = req.params
-  if(id.length !== 3 || id.match(/^[0-9]+$/)) return res.status(404).send({"error": "error id"})
+  if(id.length !== 3 || id.match(/^[0-9]+$/)) return res.sendStatus(404)
   const country = await Country.findByPk(id.toUpperCase(),{
   include: [{
     model: Activities
   }]
 });
-country? res.json(country): res.status(404).send({"error": "no se encontro al pais"})
+country? res.json(country): res.sendStatus(404)
 })
 
 

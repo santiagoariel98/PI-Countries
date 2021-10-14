@@ -3,7 +3,7 @@ import style from "./Card.module.css"
 import {Link} from "react-router-dom"
 
 
-export default function Card({img,name,continent,id}){
+export default function Card({img,name,continent,id,population}){
 	return(
 			<div className={style.Card}>
 				<img src={img} alt="img not found " />

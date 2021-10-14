@@ -13,7 +13,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull:false,
       validate:{
-        len:[5,50]
+        len:[5,50],
+        isString(str){
+          if(str.match(/\d/g)) throw new new Error("no debe contener numeros")
+        }
       }
     },
     dificulty: {

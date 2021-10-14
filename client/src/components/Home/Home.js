@@ -11,9 +11,8 @@ export default function Home() {
 const dispatch = useDispatch()
 const allCountries = useSelector((state)=> state.countries)
 
-
 const [currentPage, setCurrentPage]= useState(1)
-const [countriesPerPage]= useState(16)
+const countriesPerPage= 16
 const indexOfLastCountries = currentPage * countriesPerPage
 const indexOfFirstCountries = indexOfLastCountries - countriesPerPage
 const currentCountries = allCountries.slice(indexOfFirstCountries,indexOfLastCountries)
@@ -22,12 +21,13 @@ const lastPage = Math.ceil(allCountries.length/countriesPerPage)
 
 const [NameCountries,setNameCountries] = useState("")
 const [filters, setFilters]= useState({Continent: "All", Order: "Asc", Activities: false})
-const [filterOptions, setFilterOptions]= useState(false)
 
-const handleChangeSearch = (e)=>{setNameCountries(e.target.value)
+const handleChangeSearch = (e)=>{
+	setNameCountries(e.target.value)
 }
 const handleSumbit = (e)=>{
 	setCurrentPage(1)
+	setNameCountries("")
 	dispatch(getCountriesName(NameCountries))
 }
 
@@ -47,14 +47,8 @@ let handleChangeInputs = (e)=>{
 	}
  }
 
-let handleClick= (e)=>{
-	e.preventDefault()
-	setFilterOptions(!filterOptions)
-}
-
 let handlePageNext= (e)=>{
 	e.preventDefault()
-
 	if(e.target.name){
 		setCurrentPage(lastPage)
 	}
@@ -80,7 +74,7 @@ useEffect(()=>{dispatch(getCountries())},[dispatch])
 				<Link to="/activity">
 					<button>Create Activity</button>
 				</Link>
-				<div onClick={e=> handleClick(e) }>
+				<div>
 							<select name="Continent" onChange={e=> handleChangeInputs(e) }>
 								<option value="All">All</option>		
 								<option value="Asia">Asia</option>
@@ -100,12 +94,12 @@ useEffect(()=>{dispatch(getCountries())},[dispatch])
 
 					<input type="text"
 					placeholder = "Search country..."
+					value={NameCountries}
 					onChange={e=>handleChangeSearch(e)}
-				/>
+					/>
 					<button onClick={e=>handleSumbit(e)}>sumbit</button>				
 				</div>
 			</nav>
-			<br/>
 			<p>
 				<button className="btnPage" name="first" onClick={(e)=> handlePagePrevious(e)}>{"<<"}</button>
 				<button onClick={(e)=> handlePagePrevious(e)}>{"<"}</button>

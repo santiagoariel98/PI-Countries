@@ -48,7 +48,7 @@ await activity.addCountry(countries)
 res.json(activity)
 
   } catch (err) {
-    res.status(400).send({ "error": err.errors[0].message });
+    res.sendStatus(400);
   }
 })
 

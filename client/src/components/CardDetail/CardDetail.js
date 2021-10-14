@@ -34,7 +34,7 @@ export default function CardDetail({match}){
 					<div className={style.Activities}>{country.Activities && country.Activities.length?
 						country.Activities.map(e=>{
 							return (
-								<span>
+								<span key={e.name}>
 									<h5> {e.name[0].toUpperCase() + e.name.slice(1)}</h5>	
 									<h6>Season:</h6>
 									<h6>{e.season.join(", ")}</h6>

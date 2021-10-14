@@ -39,9 +39,23 @@ color: #fff;
   font-weight: bold;
   color: #ffde41;
 }
-.Form a{
-  background-color: rgba(23, 32, 42, 1);
+.Form button{
+  font-size: 15px;
+  border-radius: 10px;
+  font-family:"Roboto";
 
+  color: #ffde41;
+  margin: 5px;
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 2px solid  #ffde41;
+  transition: all 0.2s;  
+}
+
+.Form button:hover{
+  background-color: #ffde41;
+  border-radius: 10px;
+  color: #2E4053;
 }
 
 .Sumbit{

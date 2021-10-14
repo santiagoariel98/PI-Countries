@@ -1,12 +1,13 @@
 import React from "react"
 import {useState, useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
-import {Link} from "react-router-dom"
 import {postAddActivities, getCountries} from "../../actions/index.js"
 import style from "./FormActivity.module.css"
-
+import {useHistory} from "react-router-dom"
 
 export default function FormActivity(){
+
+  const history = useHistory()
 
   const allCountries = useSelector((state)=> state.allCountries)
   const dispatch = useDispatch()
@@ -22,7 +23,6 @@ export default function FormActivity(){
     name:"Activity: requires 5 letter",
     season:"Season: requires a season",
     country: "Country: requires a country"}) 
-  const [msg, setMsg] = useState(false)
 const validate = (input)=>{
   let errors = {}
 
@@ -66,7 +66,6 @@ const validate = (input)=>{
 
   const handleSumbit = (e)=>{
     setTimeout(200)
-  console.log(e)
   setInputs({
     name: "",
     dificulty: 3,
@@ -78,7 +77,6 @@ const validate = (input)=>{
     name:"Activity: requires 5 letter",
     season:"Season: requires a season",
     country: "Country: requires a country"})
-  setMsg(true)
   e.preventDefault()  
   dispatch(postAddActivities(inputs))
   }
@@ -86,7 +84,7 @@ const validate = (input)=>{
 useEffect(()=>{dispatch(getCountries())},[dispatch])
 	return(
 <div className={style.Form}>
-  <Link className={style.Sumbit}to="/home">back</Link>
+  <button className={style.btnBack}onClick={()=> history.goBack()}>back</button>
       <form>
         <div >
           <label>Activity name:</label>
