@@ -1,20 +1,23 @@
 import React from "react"
-import style from "./Cards.module.css"
 import Card from "../Card/Card"
+import {CountryNotFound} from "../Error/Error.js"
 
 export default function Cards({currentCountries}){
 	return(
-		<div style={{margin: "0 auto"}}>
-		{currentCountries && currentCountries.map(e=>{
+		<div className="container-cards">
+		{currentCountries.length? currentCountries.map(e=>{
 		return(
-			<Card className={style.Card} 
+			<Card 
 			img={e.img? e.img: e.flags} 
 			name={e.name}
 			population={e.population} 
 			continent={e.continent} 
-			id={e.id} 
+			id={e.id}
+			maps={e.maps} 
 			key={e.id} />)
-	})}			
+	}):
+		<CountryNotFound/>
+	}			
 		</div>
 )
 }

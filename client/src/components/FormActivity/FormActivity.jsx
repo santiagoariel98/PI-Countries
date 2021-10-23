@@ -2,16 +2,11 @@ import React from "react"
 import {useState, useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {postAddActivities, getCountries} from "../../actions/index.js"
-import style from "./FormActivity.module.css"
-import {useHistory} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 export default function FormActivity(){
-
-  const history = useHistory()
-
   const allCountries = useSelector((state)=> state.allCountries)
   const dispatch = useDispatch()
-
   const [inputs, setInputs] = useState({
     name: "",
     dificulty: 3,
@@ -20,22 +15,22 @@ export default function FormActivity(){
     country: []
   })
   const [errors, setErrors] = useState({
-    name:"Activity: requires 5 letter",
-    season:"Season: requires a season",
-    country: "Country: requires a country"}) 
+    name:"requires 5 letter",
+    season:"requires a season",
+    country: "requires a country"}) 
 const validate = (input)=>{
   let errors = {}
 
   if(input.name.length < 5){
-    errors.name = "Activity: requires 5 letter"
+    errors.name = "requires 5 letter"
   } else if(input.name.length > 25){
-    errors.name = "Activity: max 26 letter"
+    errors.name = "max 26 letter"
   }
   if(input.country.length <= 0){
-    errors.country = "Country: requires a country"
+    errors.country = "requires a country"
   }
   if(input.season.length <= 0){
-    errors.season = "Season: requires a season"
+    errors.season = "requires a season"
   }
   return errors
 }    
@@ -64,9 +59,9 @@ const validate = (input)=>{
     setInputs({...inputs,[e.target.name]: filter})
   }
 
-  const handleSumbit = (e)=>{
+  const handleSubmit = (e)=>{
     setTimeout(200)
-  setInputs({
+    setInputs({
     name: "",
     dificulty: 3,
     duration: 12,
@@ -74,100 +69,68 @@ const validate = (input)=>{
     country: []
   })
   setErrors({
-    name:"Activity: requires 5 letter",
-    season:"Season: requires a season",
-    country: "Country: requires a country"})
+    name:"requires 5 letter",
+    season:"requires a season",
+    country: "requires a country"})
   e.preventDefault()  
   dispatch(postAddActivities(inputs))
   }
-
 useEffect(()=>{dispatch(getCountries())},[dispatch])
 	return(
-<div className={style.Form}>
-  <button className={style.btnBack}onClick={()=> history.goBack()}>back</button>
-      <form>
-        <div >
-          <label>Activity name:</label>
+      <form className="form-activity">
+          <Link to="/home"className="btn-back">back</Link>
+          <h2>Create Activity</h2>
+          <label >Activity name: <span className="form-error">{errors.name? errors.name:""}</span></label>
           <input type="text"
           onChange={(e)=> handleChangeInputs(e)}
           value={inputs.name}
           name="name"
           />
-        </div>
-        <div >
-          <label >Dificulty:</label>
-          <div>
-          <span>{"★".repeat(inputs.dificulty)}</span>
+          <label >Dificulty: <span>{" ★ ".repeat(inputs.dificulty)}</span></label>
           <input type="range"
           onChange={(e)=> handleChangeInputs(e)}
           value={inputs.dificulty}
           name="dificulty"
           min="1"
           max="5"
-
           />    
-          </div>
-        </div>
-        <div >
-          <label>Duration:</label>
-          <div>
-          <span>{inputs.duration? inputs.duration === 24? "+24": inputs.duration : 12 } Hs</span> 
+          <label >Duration: <span>{inputs.duration? inputs.duration === 24? "+24": inputs.duration : 12 } Hs</span></label>
           <input type="range"
-          className={style.range}
           onChange={(e)=> handleChangeInputs(e)}
           value={inputs.duration}
           name="duration"
           min="1"
           max="24"
           />           
-          </div>
-
-        </div >
-        <div>
-          <label>Season:</label>
+          <label>Season: <span className="form-error">{errors.season? errors.season:""}</span></label>
           <select name="season"onChange={(e)=> handleChangeInputs(e)}>
             <option value="Summer">Summer</option>
-            <option value="Fall">Fall</option>
+            <option value="Autumn">Autumn</option>
             <option value="Spring">Spring</option>
             <option value="Winter">Winter</option>
           </select>
-        </div>
-
-        <div>
-        <label>Country: </label>
+        <label >Country: <span className="form-error">{errors.country? errors.country:""}</span></label>
         <select name="country"onChange={(e)=> handleChangeInputs(e)}>
         {allCountries.length? allCountries.map(e=> 
         <option key={e.id} value={e.id}>{e.name}</option>): 
         <option value="none">no hay paises</option>}
         </select>
-        </div>
-
-        <input className={style.Sumbit}
-        id="inputValidate"type="submit" 
+        <input 
+        type="submit" 
         value="Submit" 
-        onClick={(e)=> handleSumbit(e)} 
+        onClick={(e)=> handleSubmit(e)} 
         disabled={!errors.name && !errors.country && !errors.season? false: true}/>
-        <div className={style.Errors}>{
-
-        }
-          <h6 >{errors.name? errors.name:""}</h6>
-          <h6 >{errors.country? errors.country:""}</h6>
-          <h6 >{errors.season? errors.season:""}</h6>
-        </div>
-            <div  className={style.divs}>
-              {inputs.season.length? inputs.season.map(e=> 
-                <span className={style.btnClose} key={e}>{e.toUpperCase()}<button value={e} name="season" onClick={(e)=> onClosed(e)}>x</button></span>):
-              <></>
-               }
-            </div> 
-        <div className={style.divs}>
+        <div className="form-button">
+          {inputs.season.length? inputs.season.map(e=> 
+            <button key={e}value={e} name="season" onClick={(e)=> onClosed(e)}>{e}</button>):<></>
+           }
+        </div> 
+        <div className="form-button">
           {inputs.country.length?
            inputs.country.map(e=> 
-          <span className={style.btnClose}key={e}>{e}<button name="country" value={e}  onClick={(e)=> onClosed(e)}>x</button></span>):
-          <></>
+          <button key={e} name="country" value={e} onClick={(e)=> onClosed(e)}>{e}</button>):<></>
           }
         </div>       
       </form>
-</div>
     )	
 }

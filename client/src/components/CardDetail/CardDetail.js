@@ -3,64 +3,63 @@ import {useEffect} from "react"
 import {getCountryById} from "../../actions/index.js"
 import {useDispatch, useSelector} from "react-redux"
 import {Link} from "react-router-dom"
-import style from "./CardDetail.module.css"
+
 
 
 export default function CardDetail({match}){
-
 	const dispatch = useDispatch()
 	useEffect(()=>{dispatch(getCountryById(match.params.id))},[dispatch,match.params.id])
-	
 	const country =  useSelector((state)=> state.byId)
 	return(
-			<div className={style.CardDetail}>{
+			<div className="container-card-detail">
+				<div className="container">
+					<Link to="/home"className="btn-back">Back</Link>				
+				</div>
+			{
 				country?
 			<>
-				<div className={style.Card}>
+			<div className="container-cards">
+				<section className="card">
+					<div className="card-photo">
+						<img className="card-photo-img" src={country.flags} alt="img country" />					
+					</div>				
+					<div className="card-info">
+						<h1 className="title-info">{country.name}</h1>
+						<p>{country.id}</p>
+						<p>Capital: <strong>{country.capital}</strong></p>
+						<p>Subregion: <strong>{country.subregion}</strong></p>
+						<p>Area: <strong>{(country.area* 0.0010).toFixed(2) + " km2"}</strong></p>
+						<p>Population: <strong>{country.population?.toLocaleString("en")}</strong></p>						
+					</div>
+				</section>				
+			</div>
+				<h1 className="title-activity">Activities</h1>
 
-					<Link to="/home">
-					<button>Back</button>
-					</Link>
-					<img src={country.flags} alt="" width="200px"/>
-					<h3>{country.id}</h3>
-					<h1>{country.name}</h1>
-					<div><h5>Capital:</h5><h5>{country.capital}</h5></div>
-					<div><h5>Subregion:</h5><h5>{country.subregion}</h5></div>
-					<div><h5>Area:</h5><h5>{(country.area* 0.0010).toFixed(2) + " km2"}</h5></div>
-					<div><h5>Population:</h5><h5>{country.population?.toLocaleString("en")}</h5></div>
-				</div>
-				<div className={style.Card}>
-				<h1>Activities</h1>
-					<div className={style.Activities}>{country.Activities && country.Activities.length?
+					<div className="card-detail-activity">{country.Activities && country.Activities.length?
 						country.Activities.map(e=>{
 							return (
-								<span key={e.name}>
-									<h5> {e.name[0].toUpperCase() + e.name.slice(1)}</h5>	
-									<h6>Season:</h6>
-									<h6>{e.season.join(", ")}</h6>
-									<h6> Duration: {e.duration} hs</h6>
-									<h6> Dificulty: {"★".repeat(e.dificulty)}	</h6>					
-								</span>
+								<div className="activities"key={e.name}>
+									<h2> {e.name[0].toUpperCase() + e.name.slice(1)}</h2>	
+									<p>Season:</p>
+									<strong>{e.season.join(", ")}</strong>
+									<p> Duration: {e.duration} hs</p>
+									<p> Dificulty: <strong>{" ★ ".repeat(e.dificulty)}</strong></p>					
+								</div>
 								)
 						}):
-						<>
+						<footer className="create-activity">
 						<p>"There is no activity to display."</p>
 						<Link to="/activity">
 							<button>Create Activity</button>
 						</Link>
-						</>
-					}</div>							
-				</div>				
+						</footer>
+					}</div>										
 			</>:
-				<div className={style.Error}>
+				<div >
 					<p> Country Not Found</p>
-					<Link to="/home"><button>back</button></Link>
+					<Link to="/home"><button>Back</button></Link>
 				</div>	
 			}
-
-
-			
-
 			</div>
 		)
 }

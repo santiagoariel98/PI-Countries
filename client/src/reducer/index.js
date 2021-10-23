@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
       case GET_COUNTRIES_NAME:
         return{
           ...state,
-          countries: action.payload
+          countries: !action.payload? []: action.payload
         }
       case POST_ADD_ACTIVITIES:
         return{

@@ -6,13 +6,9 @@ import Home from "./components/Home/Home.js"
 import CardDetail from "./components/CardDetail/CardDetail.js"
 import FormActivity from "./components/FormActivity/FormActivity.jsx"
 import Errors from "./components/Error/Error.js"
-import {Provider} from "react-redux"
-import store from "./store/index";
-
 
 function App() {
   return (
-    <Provider store={store}>
     <div className="App">
     <Switch>
       <Route exact path="/" component={LandingPage}/>
@@ -22,7 +18,6 @@ function App() {
       <Route path="*" component={Errors}></Route>      
     </Switch>
     </div>
-    </Provider>
   );
 }
 

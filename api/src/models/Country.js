@@ -10,7 +10,13 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      validate:{
+        len:[3],
+        isString(str){
+          if(str.match(/\d/g)) throw new new Error("no debe contener numeros")
+        }
+      }
     },
     name: {
       type: DataTypes.STRING,
