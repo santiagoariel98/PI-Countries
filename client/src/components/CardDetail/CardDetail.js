@@ -37,13 +37,15 @@ export default function CardDetail({match}){
 					</div>
 					<div>
 					
+					{APIKEY?
 					<iframe
 						width='95%'
 						title="google maps"
 						loading="lazy"
 						src={`https://www.google.com/maps/embed/v1/place?key=${APIKEY}
 						&q=${country.name}`}
-					/>
+					/>:<></>
+					}
 					</div>
 				</section>				
 			</div>
