@@ -1,13 +1,14 @@
 import React from "react"
 import Card from "../Card/Card"
-import {CountryNotFound} from "../Error/Error.js"
+import {CountryNotFoundHome} from "../Error/Error.js"
 
-export default function Cards({currentCountries}){
+export default function Cards({currentCountries,searchInit}){
 	return(
 		<div className="container-cards">
 		{currentCountries.length? currentCountries.map(e=>{
 		return(
-			<Card 
+			<Card
+			Activities ={e.Activities}
 			img={e.img? e.img: e.flags} 
 			name={e.name}
 			population={e.population} 
@@ -16,7 +17,7 @@ export default function Cards({currentCountries}){
 			maps={e.maps} 
 			key={e.id} />)
 	}):
-		<CountryNotFound/>
+		<CountryNotFoundHome searchInit={searchInit}/>
 	}			
 		</div>
 )

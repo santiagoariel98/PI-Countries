@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: Noto Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -16,6 +17,10 @@ li{
   list-style: none;
 }
 
+.header-background{
+    background: #000 url(img/pexels-pixabay-220201.jpg) no-repeat fixed center center ;
+  background-size: cover;
+}
 .header-landing {
   height: 100vh;
   display: flex;
@@ -80,7 +85,7 @@ li{
 }
 
 .btn-home {
-  background-color: rgb(111, 25, 75,0.9);
+  background-color: rgb(110,39,79,0.9);
   color: #FFF;
   transition: all 0.5s;
   position: relative;
@@ -135,6 +140,9 @@ li{
 @media (max-width: 960px) {
   .content {
     padding: 0 3rem 0 3rem;
+  }
+  #section{
+    top: 45%;
   }
 }
 @keyframes top-slide {
@@ -212,6 +220,18 @@ li{
   }
   100% {
             transform: rotateX(0);
+    opacity: 1;
+  }
+}
+@keyframes scale-out-top{
+  0% {
+    transform: scale(1);
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    transform-origin: 50% 0%;
     opacity: 1;
   }
 }

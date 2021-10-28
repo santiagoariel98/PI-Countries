@@ -11,7 +11,7 @@ const dispatch = useDispatch()
 const allCountries = useSelector((state)=> state.countries)
 
 const [currentPage, setCurrentPage]= useState(1)
-const countriesPerPage= 16
+const countriesPerPage= 9
 const indexOfLastCountries = currentPage * countriesPerPage
 const indexOfFirstCountries = indexOfLastCountries - countriesPerPage
 const currentCountries = allCountries.slice(indexOfFirstCountries,indexOfLastCountries)
@@ -28,6 +28,7 @@ const handleSumbit = (e)=>{
 	setCurrentPage(1)
 	setNameCountries("")
 	dispatch(getCountriesName(NameCountries))
+
 }
 
 let handleChangeInputs = (e)=>{
@@ -69,8 +70,7 @@ useEffect(()=>{dispatch(getCountries())},[dispatch])
 	return(
 		<div id="container-home">
 			<header className="header">
-				<h1 className="logo"><Link to="/">Countries</Link></h1>
-				<div>
+				<h1 className="logo"><Link to="/">APP Countries</Link></h1>			
 					<ul className="main-nav">
 						<li><Link to="/activity" className="btn-menu btn-nav">Create Activity</Link></li>
 						<li>
@@ -101,18 +101,17 @@ useEffect(()=>{dispatch(getCountries())},[dispatch])
 							</div>					
 						</li>
 					</ul>
-				</div>
 			</header>
-			<div id="section">
 			<nav className="container-nav">
 				<div className="pag">
-					<Link to=""className="btn-page" name="first" onClick={(e)=> handlePagePrevious(e)}>{"<<"}</Link>
-					<Link to=""className="btn-page" onClick={(e)=> handlePagePrevious(e)}>{"<"}</Link>
-					<span className="pag-number">{currentPage + "-" + lastPage}</span>
-					<Link to=""className="btn-page" onClick={(e)=> handlePageNext(e)}>></Link>
-					<Link to=""className="btn-page" name="last" onClick={(e)=> handlePageNext(e)}>>></Link>
-				</div>
-			</nav>
+				<Link to=""className="btn-page" name="first" onClick={(e)=> handlePagePrevious(e)}>{"<<"}</Link>
+				<Link to=""className="btn-page" onClick={(e)=> handlePagePrevious(e)}>{"<"}</Link>
+				<span className="pag-number">{currentPage + "-" + lastPage}</span>
+				<Link to=""className="btn-page" onClick={(e)=> handlePageNext(e)}>></Link>
+				<Link to=""className="btn-page" name="last" onClick={(e)=> handlePageNext(e)}>>></Link>
+				</div>	
+			</nav>	
+			<div id="section">
 				<Cards currentCountries={currentCountries}/>				
 			</div>
 

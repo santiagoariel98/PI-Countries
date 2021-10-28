@@ -17,7 +17,8 @@ export function getCountries(){
 				    name: e.name,
 				    continent: e.continent,
 				    population: e.population,
-				    Activities: e.Activities
+				    Activities: e.Activities,
+				    maps: e.maps
     			}
     			return country
   			})
