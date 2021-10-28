@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -6,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux"
 import { BrowserRouter } from "react-router-dom";
 import store from "./store/index";
+
+export const APIKEY = process.env.REACT_APP_KEY
 
 ReactDOM.render(
   <React.StrictMode>

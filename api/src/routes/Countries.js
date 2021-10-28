@@ -15,7 +15,8 @@ const Op = Sequelize.Op;
           capital: e.capital? e.capital[0]: "-",
           subregion: e.subregion || "-",
           area: e.area || 1,
-          population: e.population || 0
+          population: e.population || 0,
+          maps: e.maps.googleMaps
         }
       })
   }))

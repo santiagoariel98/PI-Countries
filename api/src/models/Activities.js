@@ -11,9 +11,8 @@ module.exports = (sequelize) => {
 
     name: {
       type: DataTypes.STRING,
-      allowNull:false,
       validate:{
-        len:[5,50],
+        len:[5,25],
         isString(str){
           if(str.match(/\d/g)) throw new new Error("no debe contener numeros")
         }
@@ -21,28 +20,25 @@ module.exports = (sequelize) => {
     },
     dificulty: {
       type: DataTypes.INTEGER,
-      allowNull:false,
       validate:{
         len: [1,5]
       }
     },
     duration: {
       type: DataTypes.INTEGER,
-      allowNull:false,
       validate:{
         len: [1,24]
       }
     }, 
     season: {
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:false,
       validate: {
         arrayValidate(arr) {
           if(!Array.isArray(arr) || !arr.length) throw new Error('No es un array')
-            if(arr.length > 4) throw new Error('array muy largo')
-            let test = ["Summer","Winter","Fall","Spring"]
+            if(arr.length > 4) throw new Error('solo se permite 4 elemento')
+            let test = ["Summer","Winter","Autumn","Spring"]
             let filter = arr.filter(e=> test.includes(e))
-            if(arr.length !== filter.length) throw new Error('solo se permiten estos valores "Summer,Winter,Fall,Spring"')
+            if(arr.length !== filter.length) throw new Error('solo se permiten estos valores "Summer, Winter, Autumn, Spring"')
         },
       }
     }  
