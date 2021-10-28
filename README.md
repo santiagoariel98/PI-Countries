@@ -29,7 +29,7 @@ App contruida con:
 ## Scrennshots
 
 Landing page
-![Landing page](./img/Landinpage.jpg)
+![Landing page](./img/Landingpage.jpg)
 
 Home
 ![Home](./img/Home.jpg)
