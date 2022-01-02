@@ -1,22 +1,22 @@
-import './App.css';
-import { Route, Switch } from "react-router";
+import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 // components
-import LandingPage from "./components/LandingPage/LandingPage.js"
-import Home from "./components/Home/Home.js"
-import CardDetail from "./components/CardDetail/CardDetail.js"
-import FormActivity from "./components/FormActivity/FormActivity.jsx"
-import Errors from "./components/Error/Error.js"
+import LandingPage from "./components/LandingPage/LandingPage.js";
+import Home from "./components/Home/Home.jsx";
+import CardDetail from "./components/CardDetail/CardDetail.js";
+import FormActivity from "./components/FormActivity/FormActivity.jsx";
+import Errors from "./components/Error/Error.js";
 
 function App() {
   return (
     <div className="App">
-    <Switch>
-      <Route exact path="/" component={LandingPage}/>
-      <Route exact path="/home" component={Home}/>
-      <Route exact path='/country/:id' component={CardDetail}/>
-      <Route exact path="/Activity" component={FormActivity}/>
-      <Route path="*" component={Errors}></Route>      
-    </Switch>
+      <Routes>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/country/:id" element={<CardDetail />} />
+        <Route exact path="/Activity" element={<FormActivity />} />
+        <Route element={<Errors />} />
+      </Routes>
     </div>
   );
 }
