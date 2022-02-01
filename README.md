@@ -8,21 +8,21 @@
 
 App contruida con:
 #### Frontend
-- [ ] React
-- [ ] Redux
+- [x] React
+- [x] Redux
 
 #### Backend
-- [ ] Node/Express
+- [x] Node/Express
 
 #### DB
-- [ ] Sequelize - Postgres
+- [x] Sequelize - Postgres
 
 #### RESTful API
-- [ ] REST COUNTRIES v3
-- [ ] Endpoint utilizado: https://restcountries.com/v3/all
+- [x] REST COUNTRIES v3
+- [x] Endpoint utilizado: https://restcountries.com/v3/all
 
 #### API 
-- [ ] Maps Embed API (google)
+- [x] Maps Embed API (google)
 
 
 
