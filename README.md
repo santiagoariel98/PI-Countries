@@ -8,11 +8,11 @@
 
 App contruida con:
 #### Frontend
-- [ ] React
-- [ ] Redux
+- [x] React
+- [x] Redux
 
 #### Backend
-- [ ] Node/Express
+- [x] Node/Express
 
 #### DB
 - [ ] Sequelize - Postgres
