@@ -2,6 +2,11 @@
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
 
+deploy front-end: https://country-app-sv.netlify.app/
+
+api: https://countries-app-2021.herokuapp.com/countries
+
+
 # APP Countries - Individual Project (soyHenry)
 
 ## APP Countries
